@@ -3,12 +3,18 @@ import mysql from 'mysql2';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 app.use(express.json());
+app.use(express.static('public'));
 
 
 const db = mysql.createConnection({
@@ -175,4 +181,10 @@ app.get('/api/sales', (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running smoothly on port ${PORT}`);
+});
+
+// Serve frontend for non-API routes
+app.get('/', (req, res) => {
+    if (req.path.startsWith('/api')) return res.status(404).json({ message: 'API route not found' });
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });

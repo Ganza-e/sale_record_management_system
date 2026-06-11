@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sale Record Management System</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Simple frontend for SRMS" />
+</head>
+<body>
+  <header>
+    <h1>Sale Record Management System</h1>
+    <nav>
+      <button id="btn-products">Products</button>
+      <button id="btn-customers">Customers</button>
+      <button id="btn-sales">Sales</button>
+      <button id="btn-auth">Login / Register</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="auth" class="panel hidden">
+      <h2>Auth</h2>
+      <form id="login-form">
+        <h3>Login</h3>
+        <input name="CustomerNumber" placeholder="CustomerNumber" />
+        <input name="password" type="password" placeholder="Password" />
+        <button type="submit">Login</button>
+      </form>
+
+      <form id="register-form">
+        <h3>Register</h3>
+        <input name="firstName" placeholder="First name" />
+        <input name="lastName" placeholder="Last name" />
+        <input name="telephone" placeholder="Phone" />
+        <input name="address" placeholder="Address" />
+        <input name="password" type="password" placeholder="Password" />
+        <button type="submit">Register</button>
+      </form>
+      <div id="auth-msg" class="msg"></div>
+    </section>
+
+    <section id="products" class="panel hidden">
+      <h2>Products</h2>
+      <ul id="product-list"></ul>
+      <form id="add-product-form">
+        <input name="productName" placeholder="Product name" />
+        <input name="unitPrice" placeholder="Unit price" type="number" step="0.01" />
+        <button type="submit">Add Product</button>
+      </form>
+      <div id="products-msg" class="msg"></div>
+    </section>
+
+    <section id="customers" class="panel hidden">
+      <h2>Customers</h2>
+      <ul id="customer-list"></ul>
+    </section>
+
+    <section id="sales" class="panel hidden">
+      <h2>Sales</h2>
+      <ul id="sales-list"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
